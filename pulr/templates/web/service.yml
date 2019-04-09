@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: {{ include "namespace" . }}
+  labels:
+    helm.sh/chart: {{ include "chartname" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/stage: {{ .Values.stage }}
+spec:
+  type: NodePort
+  sessionAffinity: ClientIP
+  ports:
+  - port: {{ .Values.web.port }}
+    targetPort: http
+    protocol: TCP
+    name: http
+  - port: {{ .Values.web.socket }}
+    targetPort: socket
+    protocol: TCP
+    name: socket
+  selector:
+    name: web

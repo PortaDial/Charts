@@ -1,0 +1,26 @@
+image:
+  repository: eu.gcr.io/pulr-kubernetes/ordersystem
+  tag: 0.0.5
+  pullPolicy: IfNotPresent
+
+web:
+  replicas: 1
+  port: 8080
+  socket: 9092
+  healthcheck: /health
+  initializationCommand:
+  - run
+  - java
+  - -cp
+  - app:app/lib/*
+  - com.nld.ordersystem.OrdersystemApplication
+  memoryLimit: 512
+  cpuLimit: 500
+
+letsencrypt:
+  enabled: true
+  server: 'https://acme-v02.api.letsencrypt.org/directory'
+  email: s.gies21@gmail.com
+
+hosts:
+- pulr.tk

@@ -1,0 +1,34 @@
+{{ if .Values.letsencrypt.enabled }}
+{{ if .Values.hosts }}
+
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: tls-certificate
+  namespace: {{ include "namespace" . }}
+  labels:
+    helm.sh/chart: {{ include "chartname" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/stage: {{ .Values.stage }}
+spec:
+  # Name of a secret used to store the ACME account private key
+  secretName: tls-certificate
+  commonName: {{ index .Values.hosts 0 | quote }}
+  dnsNames:
+  {{ range .Values.hosts }}
+  - {{ . | quote }}
+  {{ end }}
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      {{ range .Values.hosts }}
+      - {{ . | quote }}
+      {{ end }}
+  issuerRef:
+    name: letsencrypt
+    kind: Issuer
+
+{{ end }}
+{{ end }}
