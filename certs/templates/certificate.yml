@@ -4,31 +4,28 @@
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
-  name: tls-certificate
-  namespace: {{ include "namespace" . }}
+  name: pulr-tk-tls
+  namespace: kube-system
   labels:
     helm.sh/chart: {{ include "chartname" . }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/stage: {{ .Values.stage }}
 spec:
   # Name of a secret used to store the ACME account private key
-  secretName: tls-certificate
-  commonName: {{ index .Values.hosts 0 | quote }}
+  secretName: pulr-tk-tls
+  commonName: '*.pulr.tk'
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+
   dnsNames:
-  {{ range .Values.hosts }}
-  - {{ . | quote }}
-  {{ end }}
+    - '*.pulr.tk'
   acme:
     config:
-    - http01:
-        ingressClass: nginx
+    - dns01:
+        provider: cloudflare
       domains:
-      {{ range .Values.hosts }}
-      - {{ . | quote }}
-      {{ end }}
-  issuerRef:
-    name: letsencrypt
-    kind: Issuer
+        - '*.pulr.tk'
 
 {{ end }}
 {{ end }}

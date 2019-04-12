@@ -1,6 +1,6 @@
 image:
   repository: eu.gcr.io/pulr-kubernetes/ordersystem
-  tag: 0.0.5
+  tag: 0.0.7
   pullPolicy: IfNotPresent
 
 web:
@@ -17,10 +17,11 @@ web:
   memoryLimit: 512
   cpuLimit: 500
 
-letsencrypt:
-  enabled: true
-  server: 'https://acme-v02.api.letsencrypt.org/directory'
-  email: s.gies21@gmail.com
+# letsencrypt:
+#   enabled: true
+#   server: 'https://acme-v02.api.letsencrypt.org/directory'
+#   email: s.gies21@gmail.com
 
 hosts:
-- pulr.tk
+- 'socket.pulr.tk'
+- 'pulr.tk'
