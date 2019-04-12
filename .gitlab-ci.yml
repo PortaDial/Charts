@@ -4,8 +4,7 @@ lint Helm Charts:
     entrypoint: ["/bin/sh", "-c"]
   stage: test
   script:
-    - helm lint *
-    - helm lint */charts/*
+    - helm lint pulr certs
 
 pages:
   image:
