@@ -9,15 +9,10 @@ metadata:
     app.kubernetes.io/stage: {{ .Values.stage }}
 spec:
   type: NodePort
-  # sessionAffinity: ClientIP
   ports:
   - port: {{ .Values.web.port }}
     targetPort: http
     protocol: TCP
     name: http
-  - port: {{ .Values.web.socket }}
-    targetPort: socket
-    protocol: TCP
-    name: socket
   selector:
     name: web

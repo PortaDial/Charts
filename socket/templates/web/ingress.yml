@@ -24,13 +24,6 @@ spec:
     - {{ . | quote }}
     {{ end }}
   rules:
-  - host: socket.pulr.tk
-    http:
-      paths:
-        - path: /
-          backend:
-            serviceName: web
-            servicePort: socket
   - host: pulr.tk
     http:
       paths:

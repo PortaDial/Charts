@@ -4,7 +4,7 @@ lint Helm Charts:
     entrypoint: ["/bin/sh", "-c"]
   stage: test
   script:
-    - helm lint pulr certs
+    - helm lint socket service certs 
 
 pages:
   image:
@@ -15,7 +15,8 @@ pages:
     - helm init --client-only
     - mkdir -p ./public
     - "echo \"User-Agent: *\nDisallow: /\" > ./public/robots.txt"
-    - helm package pulr --destination ./public
+    - helm package socket --destination ./public
+    - helm package service --destination ./public
     - helm repo index --url https://pulr.gitlab.io/integration/helm-charts/ ./public
   artifacts:
     paths:

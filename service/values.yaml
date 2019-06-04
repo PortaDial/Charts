@@ -1,0 +1,24 @@
+image:
+  repository: eu.gcr.io/pulr-kubernetes/payment-service
+  tag: '1.03'
+  pullPolicy: IfNotPresent
+
+web:
+  replicas: 1
+  port: 8000
+  socket: 8000
+  healthcheck: /
+  initializationCommand:
+  - php
+  - artisan
+  - serve
+  memoryLimit: 512
+  cpuLimit: 500
+
+# letsencrypt:
+#   enabled: true
+#   server: 'https://acme-v02.api.letsencrypt.org/directory'
+#   email: s.gies21@gmail.com
+
+hosts:
+- 'payment.pulr.tk'

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: {{ include "namespace" . }}
+  labels:
+    helm.sh/chart: {{ include "chartname" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/stage: {{ .Values.stage }}
+spec:
+  replicas: {{ .Values.web.replicas }}
+  selector:
+    matchLabels:
+      name: web
+  template:
+    metadata:
+      labels:
+        name: web
+    spec:
+      containers:
+        - name: server
+          image: {{ include "image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.web.healthcheck }}
+              port: {{ .Values.web.port }}
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.web.healthcheck }}
+              port: {{ .Values.web.port }}
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          ports:
+            - name: http
+              containerPort: {{ .Values.web.port }}
+              protocol: TCP
+          resources:
+            requests:
+              memory: {{ div .Values.web.memoryLimit 2 }}Mi
+              cpu: {{ div .Values.web.cpuLimit 4 }}m
+            limits:
+              memory: {{ .Values.web.memoryLimit }}Mi
+              cpu: {{ .Values.web.cpuLimit }}m
