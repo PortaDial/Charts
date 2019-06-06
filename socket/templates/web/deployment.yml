@@ -37,6 +37,9 @@ spec:
             - name: http
               containerPort: {{ .Values.web.port }}
               protocol: TCP
+            - name: socket
+              containerPort: {{ .Values.web.socket }}
+              protocol: TCP
           resources:
             requests:
               memory: {{ div .Values.web.memoryLimit 2 }}Mi

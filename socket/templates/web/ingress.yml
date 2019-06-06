@@ -31,3 +31,10 @@ spec:
           backend:
             serviceName: web
             servicePort: http
+  - host: socket.pulr.tk
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: web
+            servicePort: socket
