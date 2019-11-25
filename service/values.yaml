@@ -1,17 +1,21 @@
 image:
-  repository: eu.gcr.io/pulr-kubernetes/payment-service
-  tag: '1.03'
+  repository: gieforce/portadial
+  tag: '0.1.0'
   pullPolicy: IfNotPresent
 
 web:
   replicas: 1
   port: 8000
-  socket: 8000
   healthcheck: /
   initializationCommand:
-  - php
-  - artisan
-  - serve
+  - gunicorn
+  - w
+  - 5
+  - -k
+  - gevent
+  - -b
+  - 0.0.0.0:8000
+  - wsgi
   memoryLimit: 512
   cpuLimit: 500
 
@@ -21,4 +25,4 @@ web:
 #   email: s.gies21@gmail.com
 
 hosts:
-- 'payment.pulr.tk'
+- 'porta.langetreedorpie.nl'

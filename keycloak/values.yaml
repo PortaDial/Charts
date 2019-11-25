@@ -1,0 +1,8 @@
+keycloak:
+    ingress:
+        enabled: true
+        hosts:
+            - auth.porta.langetreedorpie.nl
+        annotations:
+            kubernetes.io/ingress.class: nginx
+            ingress.kubernetes.io/rewrite-target: /

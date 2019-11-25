@@ -1,10 +1,10 @@
 {{ if .Values.letsencrypt.enabled }}
 {{ if .Values.hosts }}
 
-apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: pulr-tk-tls
+  name: porta-tls
   namespace: kube-system
   labels:
     helm.sh/chart: {{ include "chartname" . }}
@@ -12,20 +12,14 @@ metadata:
     app.kubernetes.io/stage: {{ .Values.stage }}
 spec:
   # Name of a secret used to store the ACME account private key
-  secretName: pulr-tk-tls
-  commonName: '*.pulr.tk'
+  secretName: porta-tls
+  commonName: 'porta.langetreedorpie.nl'
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
 
   dnsNames:
-    - '*.pulr.tk'
-  acme:
-    config:
-    - dns01:
-        provider: cloudflare
-      domains:
-        - '*.pulr.tk'
+    - 'porta.langetreedorpie.nl'
 
 {{ end }}
 {{ end }}

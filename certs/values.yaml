@@ -1,8 +1,7 @@
 letsencrypt:
   enabled: true
-  server: 'https://acme-v02.api.letsencrypt.org/directory'
+  # server: 'https://acme-v02.api.letsencrypt.org/directory'
   email: s.gies21@gmail.com
 
 hosts:
-- 'socket.pulr.tk'
-- 'pulr.tk'
+- 'porta.langetreedorpie.nl'
