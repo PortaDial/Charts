@@ -14,7 +14,7 @@ pages:
   script:
     - mkdir -p ./public
     - "echo \"User-Agent: *\nDisallow: /\" > ./public/robots.txt"
-    - helm package application --destination ./public
+    - helm package application --destination ./public/charts
     - helm repo index --url https://portadial.gitlab.io/integration/helm-charts/ ./public
   artifacts:
     paths:
