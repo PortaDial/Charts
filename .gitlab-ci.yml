@@ -4,7 +4,7 @@ lint Helm Charts:
     entrypoint: ["/bin/sh", "-c"]
   stage: test
   script:
-    - helm lint service certs 
+    - helm lint application certs 
 
 pages:
   image:
@@ -14,7 +14,7 @@ pages:
   script:
     - mkdir -p ./public
     - "echo \"User-Agent: *\nDisallow: /\" > ./public/robots.txt"
-    - helm package service --destination ./public
+    - helm package application --destination ./public
     - helm repo index --url https://portadial.gitlab.io/integration/helm-charts/ ./public
   artifacts:
     paths:
