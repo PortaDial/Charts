@@ -42,3 +42,5 @@ spec:
             limits:
               memory: {{ .Values.web.memoryLimit }}Mi
               cpu: {{ .Values.web.cpuLimit }}m
+        imagePullSecrets:
+          - name: regcred
