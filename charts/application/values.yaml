@@ -19,10 +19,5 @@ web:
   memoryLimit: 512
   cpuLimit: 500
 
-# letsencrypt:
-#   enabled: true
-#   server: 'https://acme-v02.api.letsencrypt.org/directory'
-#   email: s.gies21@gmail.com
-
 hosts:
 - 'porta.langetreedorpie.nl'

@@ -17,13 +17,6 @@ spec:
     - {{ . | quote }}
     {{ end }}
   rules:
-  - host: porta.langetreedorpie.nl
-    http:
-      paths:
-        - path: /
-          backend:
-            serviceName: web
-            servicePort: http
   {{ range .Values.hosts }}
   - host: {{ . | quote }}
     http:
