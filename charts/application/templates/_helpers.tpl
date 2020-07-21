@@ -41,5 +41,5 @@
 {{- end -}}
 
 {{- define "image" -}}
-{{- printf "%s:%s" .Values.image.repository .Values.image.tag -}}
+{{- printf "%s:%s" .Values.app.repository .Values.app.version -}}
 {{- end -}}

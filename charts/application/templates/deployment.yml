@@ -18,7 +18,7 @@ spec:
       containers:
         - name: server
           image: {{ include "image" . }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.app.pullPolicy }}
           livenessProbe:
             httpGet:
               path: {{ .Values.web.healthcheck }}
