@@ -14,23 +14,12 @@ spec:
     metadata:
       labels:
         name: web
-      annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/role: "internal-app"
-        vault.hashicorp.com/agent-inject-secret-config: "connect/data/config"
-        vault.hashicorp.com/agent-inject-template-config: |
-              {{`{{ with secret "connect/data/config" -}}
-                  {{ range $k, $v := .Data.data }}
-                    export {{ $k }}={{ $v }}
-                  {{ end }}
-              {{- end }}`}}
     spec:
       serviceAccountName: internal-app
       containers:
         - name: server
           image: {{ include "image" . }}
           imagePullPolicy: {{ .Values.app.pullPolicy }}
-          args: ["sh", "-c", "source /vault/secrets/config"]
           livenessProbe:
             httpGet:
               path: {{ .Values.web.healthcheck }}
