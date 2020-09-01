@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  connect:
+  - apiVersion: v1
+    appVersion: 1.0.0
+    created: "2020-09-01T08:23:39.68241808Z"
+    description: Deployment chart for Connect React
+    digest: aab6a2faee81f958497d7613ece422cd9e6763af7cab4c4b6d2594833214f456
+    name: connect
+    urls:
+    - https://github.com/PortaDial/Charts/releases/download/connect-0.3.1/connect-0.3.1.tgz
+    version: 0.3.1
+generated: "2020-09-01T08:23:39.572597479Z"
