@@ -1,5 +1,5 @@
 apiVersion: v1
 appVersion: "1.0.0"
 description: Deployment chart for Connect React
-name: application
+name: connect
 version: 0.3.0
