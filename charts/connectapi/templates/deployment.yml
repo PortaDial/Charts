@@ -33,7 +33,8 @@ spec:
           args: 
             - /bin/sh
             - "-c"
-            - "source /vault/secrets/config"
+            - "source" 
+            - "/vault/secrets/config"
           livenessProbe:
             httpGet:
               path: {{ .Values.web.healthcheck }}
