@@ -30,7 +30,10 @@ spec:
         - name: server
           image: {{ include "image" . }}
           imagePullPolicy: {{ .Values.app.pullPolicy }}
-          args: ["source /vault/secrets/config"]
+          args: 
+            - /bin/sh
+            - "-c"
+            - "source /vault/secrets/config"
           livenessProbe:
             httpGet:
               path: {{ .Values.web.healthcheck }}
