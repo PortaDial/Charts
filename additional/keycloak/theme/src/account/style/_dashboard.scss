@@ -1,0 +1,30 @@
+.ProfileContent {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 50%;
+  width: 96px;
+  height: 96px;
+
+  img {
+    border-radius: 50%;
+    height: 100%;
+    width: auto;
+  }
+}
+
+.GreetingsMessage {
+  text-align: center;
+  font-size: 1.1rem;
+
+  &:not(.NoMargin) {
+    margin-top: 2rem;
+  }
+
+  .Username {
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,6 @@
+/node_modules
+/carbon
+.sonarlint
+.idea
+.docker-compose
+helm
