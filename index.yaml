@@ -3,6 +3,15 @@ entries:
   certs:
   - apiVersion: v1
     appVersion: 1.0.0
+    created: "2020-09-03T14:58:21.730001658Z"
+    description: A helm chart for cert management
+    digest: b63fcb90b14d33c07bda8613fbf4c7a2812d073dcff76e1637dda52c823c44c5
+    name: certs
+    urls:
+    - https://github.com/PortaDial/Charts/releases/download/certs-0.3.10/certs-0.3.10.tgz
+    version: 0.3.10
+  - apiVersion: v1
+    appVersion: 1.0.0
     created: "2020-09-02T10:14:56.010117155Z"
     description: A helm chart for cert management
     digest: 7956a811511098b17264816985b7ecdd7fe932f1f8ce6292349b990d49d04da3
@@ -74,6 +83,15 @@ entries:
     - https://github.com/PortaDial/Charts/releases/download/certs-0.3.2/certs-0.3.2.tgz
     version: 0.3.2
   connect:
+  - apiVersion: v1
+    appVersion: 1.0.0
+    created: "2020-09-03T14:58:21.811208126Z"
+    description: Deployment chart for Connect React
+    digest: a180ef9bba54ca6316d1ae1d2c4fab62fe5da85a5271e139977f3713005796c9
+    name: connect
+    urls:
+    - https://github.com/PortaDial/Charts/releases/download/connect-0.3.10/connect-0.3.10.tgz
+    version: 0.3.10
   - apiVersion: v1
     appVersion: 1.0.0
     created: "2020-09-02T10:14:56.103494524Z"
@@ -156,6 +174,15 @@ entries:
     - https://github.com/PortaDial/Charts/releases/download/connect-0.3.1/connect-0.3.1.tgz
     version: 0.3.1
   connectapi:
+  - apiVersion: v1
+    appVersion: 1.0.0
+    created: "2020-09-03T14:58:21.900459301Z"
+    description: Deployment chart for Connect API
+    digest: 1410f1ebabf0a00be7a6a578c374a30b399ce05ef929282b11f7c1b840a3f1a3
+    name: connectapi
+    urls:
+    - https://github.com/PortaDial/Charts/releases/download/connectapi-0.3.10/connectapi-0.3.10.tgz
+    version: 0.3.10
   - apiVersion: v1
     appVersion: 1.0.0
     created: "2020-09-02T10:14:56.230547807Z"
